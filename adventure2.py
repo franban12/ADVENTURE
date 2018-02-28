@@ -11,6 +11,7 @@ hallway4 = Room('Hallway 4', 'You are again in another hallway. You hear faint b
 guard_room = Room('Guard', 'You see a guard', 'b2')
 hallway5 = Room('Hallway 4', 'You are in a brighter hallway', 'h4')
 stairs = Room('Set of Stairs', 'You find a set of extravagent set of stairs. You see a lot of light', 's')
+dungeon_door = Room('Locked door', 'The door is locked, find the key to unlock it. ', 'dd')
 
 cell.add_connection(doorway, "passage", ["east", "e"])
 doorway.add_connection(hallway1, "passage", ["north", "n"])
@@ -20,6 +21,8 @@ hallway3.add_connection(hallway4, "passage", ["north", "n"])
 hallway4.add_connection(guard_room, "passage", ["west", "w"])
 guard_room.add_connection(hallway5, "passage", ["north", "n"])
 hallway5.add_connection(stairs, "passage", ["east", "e", "go up", "climb stairs", "go up stairs"])
+stairs.add_connection(hallway5, "passage", ["west", "w", "go down", "down"])
+stairs.add_connection(dungeon_door, "passage", [""])
 
 
 
