@@ -52,3 +52,8 @@ class Flashlight(Item):
     def compute_usage(self):
         pass
 
+class keys(Item):
+    def __init__(self):
+
+class potions(Item):
+    def __init__(self):
