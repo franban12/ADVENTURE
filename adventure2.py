@@ -2,16 +2,17 @@ from Inventory import Inventory
 from adventure import Room
 
 cell = Room('Cell', 'You are stuck in a dark, grimy dungeon cell', 'c')
-keys = Room('Keys', 'Who left these here?', 'k')
+keys1 = Room('Keys', 'Who left these here?', 'k1')
 doorway = Room('doorway', 'You have unlocked the cell door.', 'd')
 hallway1 = Room('Hallway 1', 'You are in a hallway', 'h1')
 hallway2 = Room('Hallway 2', 'You are in a hallway, you see something on the floor', 'h2')
 hallway3 = Room('Hallway 3', 'The hallway darken, you find a sleeping potion', 'h3')
-hallway4 = Room('Hallway 4', 'You are again in another hallway. You hear faint breathing. Be careful', 'h4')
+hallway4 = Room('Hallway 4', 'You are again in another hallway. You hear faint breathing. Be careful.', 'h4')
 guard_room = Room('Guard', 'You see a guard', 'b2')
 hallway5 = Room('Hallway 4', 'You are in a brighter hallway', 'h4')
 stairs = Room('Set of Stairs', 'You find a set of extravagent set of stairs. You see a lot of light', 's')
 dungeon_door = Room('Locked door', 'The door is locked, find the key to unlock it. ', 'dd')
+keys2 = Room('Keys', 'You found keys! Hmm, maybe it would work with the door', 'k2')
 
 cell.add_connection(doorway, "passage", ["east", "e"])
 doorway.add_connection(hallway1, "passage", ["north", "n"])
@@ -22,7 +23,8 @@ hallway4.add_connection(guard_room, "passage", ["west", "w"])
 guard_room.add_connection(hallway5, "passage", ["north", "n"])
 hallway5.add_connection(stairs, "passage", ["east", "e", "go up", "climb stairs", "go up stairs"])
 stairs.add_connection(hallway5, "passage", ["west", "w", "go down", "down"])
-stairs.add_connection(dungeon_door, "passage", [""])
+stairs.add_connection(dungeon_door, "passage", ["north east", "ne"])
+stairs.add_connection()
 
 
 
