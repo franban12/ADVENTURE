@@ -1,24 +1,24 @@
-from Inventory import Inventory
-from adventure import Room
+from Inventory import Inventory, Sleeping_potion, Keys
+from adventure import Room, LockedRoom, GuardRoom, EndRoom
 
 cell = Room('Cell', 'You are stuck in a dark, grimy dungeon cell', 'c')
-keys1 = Room('Keys', 'Who left these here?', 'k1')
-doorway = Room('doorway', 'You have unlocked the cell door.', 'd')
+doorway = LockedRoom('doorway', 'd')
 hallway1 = Room('Hallway 1', 'You are in a hallway', 'h1')
 hallway2 = Room('Hallway 2', 'You are in a hallway, you see something on the floor', 'h2')
 hallway3 = Room('Hallway 3', 'The hallway darkens, you find a sleeping potion', 'h3')
-hallway4 = Room('Hallway 4', 'You are again in another hallway. You hear faint breathing. Be careful.', 'h4')
-guard_room1 = Room('Guard', 'You see a guard', 'g1')
+hallway4 = Room('Hallway 4', 'You are again in another hallway. Be careful.', 'h4')
+guard_room1 = GuardRoom('Guard', 'You see a guard', 'g1')
 hallway5 = Room('Hallway 5', 'You are in a brighter hallway', 'h4')
 stairs = Room('Set of Stairs', 'You find a set of set of stairs. You find a knock-out potion', 's')
-dungeon_door = Room('Locked door', 'The door is locked, find the key to unlock it. ', 'dd')
-keys2 = Room('Keys', 'You found keys! Hmm, maybe it would work with the door', 'k2')
-guard_room2 = ('Another Guard', 'Oh no, another guard!', 'g2')
-free = ('Free', 'You did it. You are now free!' 'f')
+dungeon_door = LockedRoom('Locked door', 'The door is locked, find the key to unlock it. ', 'dd')
+guard_room2 = GuardRoom('Another Guard', 'Oh no, another guard!', 'g2')
+free = EndRoom('Free', 'You did it. You are now free!' 'f')
+hallway3.add_item(Sleeping_potion())
+hallway5.add_item(Sleeping_potion())
+cell.add_item(Keys())
+stairs.add_item(Keys())
 
 cell.add_connection(doorway, "passage", ["east", "e"])
-cell.add_connection(keys1, "key", ["south", "s"])
-keys1.add_connection(cell, "passage",["north", "n"] )
 doorway.add_connection(hallway1, "passage", ["north", "n"])
 hallway1.add_connection(hallway2, "passage", ["east", "e"])
 hallway2.add_connection(hallway3, "passage", ["east", "e"])
@@ -30,9 +30,9 @@ hallway5.add_connection(stairs, "passage", ["east", "e", "go up", "climb stairs"
 hallway5.add_connection(guard_room1, "passage", ["south", "s"])
 stairs.add_connection(hallway5, "passage", ["west", "w", "go down", "down"])
 stairs.add_connection(dungeon_door, "passage", ["north east", "ne"])
-dungeon_door.add_connection(keys2, "passage", ["south", "s"])
-keys2.add_connection(dungeon_door, "passage", ["north", "n"])
 dungeon_door.add_connection(guard_room2, "passage", ["east", "e",])
+guard_room2.add_connection(free, "passage", ["east", "e"])
+exit()
 
 
 

@@ -18,7 +18,7 @@ class Room():
             self.rooms[direction] = room
         self.connectors.append((connector, actions[0]))
 
-    def enter_room(self):
+    def enter_room(self, inventory):
         print self.name
         print
         print self.description
@@ -51,4 +51,44 @@ class Room():
                    return "I don't know what you want to pick up."
        else:
            return None
+
+
+class EndRoom(Room):
+    def enter_room(self, inventory):
+        print "You've escaped!"
+        exit()
+
+
+class LockedRoom(Room):
+    def __init__(self, forward_room, back_room):
+        self.forward_room = forward_room
+        self.back_room = back_room
+        Room.__init__(self)
+
+    def enter_room(self, inventory):
+        if inventory.contains(Keys):
+            self.forward_room.enter_room()
+            return self.forward_room
+        else:
+            print "The door is locked."
+            self.back_room.enter_room()
+            return self.back_room
+
+
+class GuardRoom(Room):
+    def __init__(self, forward_room, back_room):
+        self.forward_room = forward_room
+        self.bach_room = back_room
+        Room.__init__(self)
+
+        def enter_room(self, inventory):
+            if inventory.contains(Sleeping_potion):
+                self.forward_room.enter_room()
+                return self.forward_room
+            else:
+                print "Uh oh!"
+                self.back_room.enter_room()
+                return self.back_roo
+
+
 

@@ -52,8 +52,13 @@ class Flashlight(Item):
     def compute_usage(self):
         pass
 
-class keys(Item):
-    def __init__(self):
+class Keys(Item):
+    def __init__(self, name = "keys"):
+        Item.__init__(self, name)
+        pass
 
-class potions(Item):
-    def __init__(self):
+
+class Sleeping_potion(Item):
+    def __init__(self, name = "sleeping potion"):
+        Item.__init__(self, name)
+        pass
