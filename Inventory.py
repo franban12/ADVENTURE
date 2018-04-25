@@ -1,4 +1,4 @@
-class Inventory():
+class Inventory:
     def __init__(self):
         self.items = []
 
@@ -14,12 +14,28 @@ class Inventory():
             print item.get_name()
 
 
-class Item():
+class Item:
     def __init__(self, name):
         self.name = name
 
     def get_name(self):
         return self.name
+
+
+class Item:
+    def __init__(self, name):
+        self.name = name
+        self.known_commands = {}
+
+    def get_name(self):
+        return self.name
+
+    def process_command(self, command):
+        for a_command in self.known_commands:
+            if a_command in command:
+                self.known_commands[a_command](command)
+
+    def process_command(self, command, inventory):
 
 
 class Literature(Item):
@@ -52,13 +68,28 @@ class Flashlight(Item):
     def compute_usage(self):
         pass
 
-class Keys(Item):
-    def __init__(self, name = "keys"):
-        Item.__init__(self, name)
-        pass
 
-
+# Code below was copied from trinket page, from things edited on that page and not on Python (still my code)
 class Sleeping_potion(Item):
     def __init__(self, name = "sleeping potion"):
         Item.__init__(self, name)
+        self.known_commands ["get the"]
+        pass
+
+class Knockout_potion(Item):
+    def __init__(self, name = "knockout potion"):
+        self.known_commands ["get the"]
+        Item.__init__(self, name)
+        pass
+
+class cell_keys(Item):
+    def __init__(self, name = "keys"):
+        Item.__init__(self, name)
+        self.known_commands ["get the"]
+        pass
+
+class dungeon_keys(Item):
+    def __init__(self, name = "keys"):
+        Item.__init__(self, name)
+        self.known_commands ["get the"]
         pass

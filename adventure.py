@@ -1,5 +1,5 @@
 class Room():
-    def __init__(self, name, description, id):
+    def __init__(self, name = "", description = "", id = ""):
         self.name = name
         self.description = description
         self.id = id
@@ -27,6 +27,7 @@ class Room():
             for connector in self.connectors:
                 print "There is a " + connector[0] + \
                     " that goes " + connector[1]
+
 
     def get_name(self):
         return self.name
@@ -76,10 +77,9 @@ class LockedRoom(Room):
 
 
 class GuardRoom(Room):
-    def __init__(self, forward_room, back_room):
-        self.forward_room = forward_room
-        self.bach_room = back_room
-        Room.__init__(self)
+    def __init__(self, name, description, id):
+
+        Room.__init__(self, name, description, id)
 
         def enter_room(self, inventory):
             if inventory.contains(Sleeping_potion):

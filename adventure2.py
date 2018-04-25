@@ -1,4 +1,4 @@
-from Inventory import Inventory, Sleeping_potion, Keys
+from Inventory import Inventory, Sleeping_potion, Knockout_potion,  cell_keys, dungeon_keys
 from adventure import Room, LockedRoom, GuardRoom, EndRoom
 
 cell = Room('Cell', 'You are stuck in a dark, grimy dungeon cell', 'c')
@@ -10,13 +10,14 @@ hallway4 = Room('Hallway 4', 'You are again in another hallway. Be careful.', 'h
 guard_room1 = GuardRoom('Guard', 'You see a guard', 'g1')
 hallway5 = Room('Hallway 5', 'You are in a brighter hallway', 'h4')
 stairs = Room('Set of Stairs', 'You find a set of set of stairs. You find a knock-out potion', 's')
-dungeon_door = LockedRoom('Locked door', 'The door is locked, find the key to unlock it. ', 'dd')
+dungeon_door = LockedRoom('dungeon_door', 'dd')
 guard_room2 = GuardRoom('Another Guard', 'Oh no, another guard!', 'g2')
 free = EndRoom('Free', 'You did it. You are now free!' 'f')
+
 hallway3.add_item(Sleeping_potion())
-hallway5.add_item(Sleeping_potion())
-cell.add_item(Keys())
-stairs.add_item(Keys())
+hallway5.add_item(Knockout_potion())
+cell.add_item(cell_keys())
+stairs.add_item(dungeon_keys())
 
 cell.add_connection(doorway, "passage", ["east", "e"])
 doorway.add_connection(hallway1, "passage", ["north", "n"])
@@ -32,8 +33,6 @@ stairs.add_connection(hallway5, "passage", ["west", "w", "go down", "down"])
 stairs.add_connection(dungeon_door, "passage", ["north east", "ne"])
 dungeon_door.add_connection(guard_room2, "passage", ["east", "e",])
 guard_room2.add_connection(free, "passage", ["east", "e"])
-exit()
-
 
 
 #cell.add_room('e', doorway)
