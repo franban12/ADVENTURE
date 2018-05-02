@@ -38,7 +38,7 @@ class Item:
     def process_command(self, command, inventory):
 
 
-class Literature(Item):
+class SpellBook(Item):
     def __init__(self, name, contents = "This item is blank"):
         Item.__init__(self, name)
         self.contents = contents
@@ -50,7 +50,7 @@ class Literature(Item):
         self.contents = contents
 
 
-class Flashlight(Item):
+class Lantern(Item):
     def __init__(self, name, battery_level = 100, state = "Off"):
         Item.__init__(self, name)
         self.battery_level = battery_level
@@ -73,23 +73,23 @@ class Flashlight(Item):
 class Sleeping_potion(Item):
     def __init__(self, name = "sleeping potion"):
         Item.__init__(self, name)
-        self.known_commands ["get the"]
+        self.known_commands ["get the ", "pick up ", "retrieve "]
         pass
 
 class Knockout_potion(Item):
     def __init__(self, name = "knockout potion"):
-        self.known_commands ["get the"]
+        self.known_commands ["get the ", "pick up ", "retrieve "]
         Item.__init__(self, name)
         pass
 
 class cell_keys(Item):
     def __init__(self, name = "keys"):
         Item.__init__(self, name)
-        self.known_commands ["get the"]
+        self.known_commands ["get the ", "pick up ", "retrieve "]
         pass
 
 class dungeon_keys(Item):
     def __init__(self, name = "keys"):
         Item.__init__(self, name)
-        self.known_commands ["get the"]
+        self.known_commands ["get the ", "pick up ", "retrieve "]
         pass

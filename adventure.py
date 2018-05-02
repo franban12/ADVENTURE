@@ -1,3 +1,5 @@
+from Inventory import Inventory, Slepping_potion, Knockout_potion, cell_keys, dungeon_keys
+
 class Room():
     def __init__(self, name = "", description = "", id = ""):
         self.name = name
@@ -60,6 +62,7 @@ class EndRoom(Room):
         exit()
 
 
+#Need to figure out to add two items into this:
 class LockedRoom(Room):
     def __init__(self, forward_room, back_room):
         self.forward_room = forward_room
@@ -67,28 +70,46 @@ class LockedRoom(Room):
         Room.__init__(self)
 
     def enter_room(self, inventory):
-        if inventory.contains(Keys):
+        if inventory.contains(cell_keys):
             self.forward_room.enter_room()
             return self.forward_room
         else:
-            print "The door is locked."
-            self.back_room.enter_room()
-            return self.back_room
+            if inventory.contains(dungeon_keys):
+                self.forward_room.enter_room()
+                return self.forward_room
+    elif:
+        print "The door is locked."
+        self.back_room.enter_room()
+        return self.back_room
 
 
 class GuardRoom(Room):
     def __init__(self, name, description, id):
-
         Room.__init__(self, name, description, id)
-
         def enter_room(self, inventory):
             if inventory.contains(Sleeping_potion):
                 self.forward_room.enter_room()
                 return self.forward_room
             else:
-                print "Uh oh!"
-                self.back_room.enter_room()
-                return self.back_roo
+                if inventory.contians(Knockout_potion):
+                    self.forward_room.enter_room()
+                    return self.forward_room
+        elif:
+            print "Uh oh! You have been caught!"
+            self.back_room.enter_room()
+            return self.back_room
 
+#DarkRoom like a gru room, need to add to map
+class DarkRoom(Room):
+    def __init__(self, name, description, id):
+        Room.__init__(self, name, description, id)
+        def enter_room(self, inventory):
+            if inventory.contains(Lantern):
+                self.forward_room.enter_room()
+                return self.forward_room
+            else:
+                print "Uh oh! Guess you're dead."
+                self.back_room.enter_room()
+                return self.back_room
 
 

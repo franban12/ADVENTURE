@@ -1,10 +1,10 @@
-from Inventory import Inventory, Sleeping_potion, Knockout_potion,  cell_keys, dungeon_keys
+from Inventory import Inventory, Sleeping_potion, Knockout_potion,  cell_keys, dungeon_keys, SpellBook, Lantern
 from adventure import Room, LockedRoom, GuardRoom, EndRoom
 
 cell = Room('Cell', 'You are stuck in a dark, grimy dungeon cell', 'c')
 doorway = LockedRoom('doorway', 'd')
 hallway1 = Room('Hallway 1', 'You are in a hallway', 'h1')
-hallway2 = Room('Hallway 2', 'You are in a hallway, you see something on the floor', 'h2')
+hallway2 = DarkRoom('Hallway 2', 'You are in a hallway, you see something on the floor', 'h2')
 hallway3 = Room('Hallway 3', 'The hallway darkens, you find a sleeping potion', 'h3')
 hallway4 = Room('Hallway 4', 'You are again in another hallway. Be careful.', 'h4')
 guard_room1 = GuardRoom('Guard', 'You see a guard', 'g1')
@@ -14,7 +14,10 @@ dungeon_door = LockedRoom('dungeon_door', 'dd')
 guard_room2 = GuardRoom('Another Guard', 'Oh no, another guard!', 'g2')
 free = EndRoom('Free', 'You did it. You are now free!' 'f')
 
+#Spell Book has no significance, neither does the lantern (unless gru is added into game)
+hallway1.add_item(Lantern())
 hallway3.add_item(Sleeping_potion())
+hallway4.add_item(SpellBook())
 hallway5.add_item(Knockout_potion())
 cell.add_item(cell_keys())
 stairs.add_item(dungeon_keys())
